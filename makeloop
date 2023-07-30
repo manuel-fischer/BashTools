@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+while true
+do
+    if make --question $*
+    then
+        inotifywait -r . --quiet -e modify -e move -e create -e delete
+    else
+        make $*
+    fi
+done
